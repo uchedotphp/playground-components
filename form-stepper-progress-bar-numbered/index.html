@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Step/Progress bar Indicator</title>
+    <style>
+      .progress-container {
+        display: flex;
+        justify-content: space-between;
+        width: -webkit-fill-available;
+        position: relative;
+        padding: 16px 24px;
+        background-color: white;
+        border-radius: 8px;
+        margin-top: 32px;
+      }
+
+      .progress-container .step {
+        text-align: center;
+        position: relative;
+        flex: 1;
+      }
+
+      .progress-container .circle {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: white;
+        border: 1px solid #c4c4c4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        font-size: 16px;
+        color: #c4c4c4;
+        z-index: 1;
+        position: relative;
+      }
+
+      .progress-container .circle svg {
+        display: none;
+      }
+
+      .progress-container .circle svg.completed {
+        display: inline;
+      }
+
+      .progress-container .step.completed .circle {
+        background-color: #0043ce;
+        border-color: #0043ce;
+      }
+
+      .progress-container .step.active .circle {
+        background-color: #ddf2fc;
+        border-color: #0043ce;
+      }
+
+      .progress-container .label {
+        margin-top: 8px;
+        color: #6f6f6f;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 16px;
+        letter-spacing: 0.5px;
+        margin-top: 8px;
+        font-family: "Nunito Sans", sans-serif;
+        @media only screen and (max-width: 768px) {
+          font-size: 12px;
+          line-height: 24px;
+          font-weight: 300;
+        }
+      }
+
+      .progress-container .label.active {
+        color: #0f4880;
+      }
+
+      .progress-container .label.completed {
+        color: #0a3055;
+      }
+
+      .progress-container .bar {
+        position: absolute;
+        top: 25%;
+        left: calc(50% + 5px);
+        height: 1px;
+        width: calc(100% - 10px);
+        background-color: #c6c6c6;
+        z-index: 0;
+        transform: translateY(-50%);
+      }
+
+      .progress-container .step.completed .bar {
+        background-color: #006fbb;
+      }
+
+      .progress-container .next-bar {
+        background-color: #c6c6c6 !important;
+      }
+
+      .progress-container .step:last-child .bar {
+        display: none;
+      }
+
+      .progress-container .spot {
+        height: 5px;
+        width: 5px;
+        border-radius: 50%;
+        background-color: #0043ce;
+        display: none;
+      }
+
+      .progress-container .spot.active {
+        display: inline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="progress-container">
+      <div class="step">
+        <div class="circle">
+          <svg
+            style="height: 13px; width: 13px; color: white"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+              clip-rule="evenodd"
+            />
+          </svg>
+          <span aria-hidden="true" class="spot"> </span>
+        </div>
+        <div class="label">Applicant Info</div>
+        <div class="bar"></div>
+      </div>
+      <div class="step">
+        <div class="circle">
+          <svg
+            style="height: 13px; width: 13px; color: white"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+              clip-rule="evenodd"
+            />
+          </svg>
+          <span aria-hidden="true" class="spot"> </span>
+        </div>
+        <div class="label">Summary Info</div>
+        <div class="bar"></div>
+      </div>
+      <div class="step">
+        <div class="circle">
+          <svg
+            style="height: 13px; width: 13px; color: white"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+              clip-rule="evenodd"
+            />
+          </svg>
+          <span aria-hidden="true" class="spot"> </span>
+        </div>
+        <div class="label">Case Details</div>
+        <div class="bar"></div>
+      </div>
+      <div class="step">
+        <div class="circle">
+          <svg
+            style="height: 13px; width: 13px; color: white"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+              clip-rule="evenodd"
+            />
+          </svg>
+          <span aria-hidden="true" class="spot"> </span>
+        </div>
+        <div class="label">Contact Info</div>
+      </div>
+    </div>
+
+    <script>
+      function updateProgressBar(step) {
+        const progressSteps = document.querySelectorAll(
+          ".progress-container .step"
+        );
+        if (progressSteps.length) {
+          progressSteps.forEach((element, index) => {
+            const isCurrentStep = index + 1 === parseInt(step);
+            const previousStep = index;
+            if (isCurrentStep && previousStep < index + 1) {
+              for (let stepper = 0; stepper < previousStep; stepper++) {
+                progressSteps[stepper].classList.add("completed");
+                progressSteps[stepper].children[1].classList.add("completed");
+                progressSteps[stepper].children[0].children[0].classList.add(
+                  "completed"
+                );
+              }
+            }
+            if (isCurrentStep) {
+              element.children[0].children[1].classList.add("active");
+              element.classList.add("active");
+              element.children[1].classList.add("active");
+            }
+          });
+        }
+      }
+
+      const stepNumber = 4; // Use this to set the current step number
+      updateProgressBar(stepNumber);
+    </script>
+  </body>
+</html>
